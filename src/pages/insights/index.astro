@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { insights } from '../../data/insights';
+
+const published = insights.filter((i) => i.status === 'published');
+const allNiches = ['All', ...new Set(published.map((i) => i.niche))];
+---
+
+<Base
+  title="Insights | Happy House — SEO for Contractors"
+  description="SEO insights, strategies, and guides for home services contractors. Learn about technical SEO, content, video, and AI search visibility."
+>
+  <section class="bg-navy py-24">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <h1 class="text-[40px] font-extrabold leading-[1.1] text-sky-brand md:text-[56px]">Insights</h1>
+      <p class="mt-4 text-lg text-white/80">SEO strategies and guides built for home services contractors.</p>
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <!-- Filter tabs -->
+      <div class="mb-10 flex flex-wrap gap-2" id="niche-filters">
+        {allNiches.map((niche) => (
+          <button
+            class="niche-tab rounded-lg border border-border px-4 py-2 text-sm font-medium text-muted transition hover:border-sky-brand hover:text-sky-brand data-[active]:bg-sky-brand data-[active]:text-white data-[active]:border-sky-brand"
+            data-niche={niche}
+            data-active={niche === 'All' ? '' : undefined}
+          >
+            {niche}
+          </button>
+        ))}
+      </div>
+
+      <!-- Article grid -->
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" id="articles-grid">
+        {published.map((article) => (
+          <div data-niche={article.niche}>
+            <ArticleCard
+              title={article.title}
+              description={article.description}
+              slug={article.slug}
+              niche={article.niche}
+              readTime={article.readTime}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const tabs = document.querySelectorAll('.niche-tab');
+  const articles = document.querySelectorAll('#articles-grid > div');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => t.removeAttribute('data-active'));
+      tab.setAttribute('data-active', '');
+
+      const niche = tab.getAttribute('data-niche');
+      articles.forEach((article) => {
+        if (niche === 'All' || article.getAttribute('data-niche') === niche) {
+          (article as HTMLElement).style.display = '';
+        } else {
+          (article as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

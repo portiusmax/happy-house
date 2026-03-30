@@ -1,0 +1,138 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { niches } from '../data/niches';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return niches.map((niche) => ({
+    params: { niche: niche.slug },
+    props: { niche },
+  }));
+};
+
+const { niche } = Astro.props;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `${niche.name} SEO Services`,
+  provider: {
+    '@type': 'Organization',
+    name: 'Happy House',
+    url: 'https://happyhouseseo.com',
+  },
+  description: niche.metaDescription,
+  areaServed: 'United States',
+  serviceType: 'Search Engine Optimization',
+};
+
+const faqItems = [
+  {
+    question: `How long does SEO take for ${niche.name.toLowerCase()} companies?`,
+    answer: `You'll see early movement in months 2–3. Real traction in months 4–6. The kind of results that change your ${niche.name.toLowerCase()} business in months 8–12. We set this expectation on day one.`,
+  },
+  {
+    question: `How is Happy House different from other SEO agencies for ${niche.name.toLowerCase()}?`,
+    answer: `We only work with home services contractors. That means we understand ${niche.name.toLowerCase()} keywords, seasonal patterns, customer behavior, and competitive dynamics better than any generalist. Plus we include AEO/GEO — AI search optimization — which most agencies haven't even heard of.`,
+  },
+  {
+    question: 'What is AEO/GEO?',
+    answer: 'AEO is Answer Engine Optimization — optimizing your content to appear in AI-generated answers on ChatGPT, Google AI Overviews, and Perplexity. GEO is Generative Engine Optimization, the broader discipline. We build this into every piece of content we produce.',
+  },
+  {
+    question: 'How much does it cost?',
+    answer: "Starting at $5,000/month with no contracts. Scope varies based on your market size and competition level. We'll give you a clear number after your free market audit.",
+  },
+];
+---
+
+<Base
+  title={niche.metaTitle}
+  description={niche.metaDescription}
+  schema={serviceSchema}
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-navy py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="max-w-3xl">
+        <span class="mb-4 inline-block rounded-md bg-sky-light px-3 py-1 text-sm font-semibold text-sky-darker">{niche.name}</span>
+        <h1 class="text-[40px] font-extrabold leading-[1.1] text-sky-brand md:text-[64px]">{niche.heroHeadline}</h1>
+        <p class="mt-6 text-lg text-white/80 md:text-xl">Happy House builds full search acquisition systems for {niche.name.toLowerCase()} contractors — technical SEO, content, video, design, and AI search visibility. Starting at $5,000/month.</p>
+        <a href="/audit" class="mt-10 inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">{niche.ctaText}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Search -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">{niche.whySearchTitle}</h2>
+      <p class="text-muted leading-relaxed">{niche.whySearchBody}</p>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">{niche.problemTitle}</h2>
+      <p class="text-muted leading-relaxed">{niche.problemBody}</p>
+    </div>
+  </section>
+
+  <!-- Five Pillars for this Niche -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-12 text-[32px] font-bold text-navy md:text-[40px]">What the Happy House system looks like for {niche.name.toLowerCase()}</h2>
+
+      <div class="space-y-10">
+        <div>
+          <h3 class="mb-3 text-xl font-bold text-navy">Keywords & Technical SEO</h3>
+          <p class="text-muted leading-relaxed">{niche.pillarKeywords}</p>
+        </div>
+        <div>
+          <h3 class="mb-3 text-xl font-bold text-navy">Content Production</h3>
+          <p class="text-muted leading-relaxed">{niche.pillarContent}</p>
+        </div>
+        <div>
+          <h3 class="mb-3 text-xl font-bold text-navy">Video Production</h3>
+          <p class="text-muted leading-relaxed">{niche.pillarVideo}</p>
+        </div>
+        <div>
+          <h3 class="mb-3 text-xl font-bold text-navy">Graphic Design</h3>
+          <p class="text-muted leading-relaxed">{niche.pillarDesign}</p>
+        </div>
+        <div>
+          <h3 class="mb-3 text-xl font-bold text-navy">AEO / GEO — AI Search Optimization</h3>
+          <p class="text-muted leading-relaxed">{niche.pillarAEO}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">Realistic timeline for {niche.name.toLowerCase()}</h2>
+      <p class="text-muted leading-relaxed">{niche.timeline}</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-12 text-[32px] font-bold text-navy md:text-[40px]">Common questions about {niche.name.toLowerCase()} SEO</h2>
+      <FAQAccordion items={faqItems} />
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-navy py-24">
+    <div class="mx-auto max-w-[800px] px-6 text-center">
+      <h2 class="mb-4 text-[32px] font-bold text-white md:text-[40px]">Ready to dominate {niche.name.toLowerCase()} search in your market?</h2>
+      <p class="mb-8 text-lg text-white/70">Get a free market audit and see exactly where you stand — on Google and in AI.</p>
+      <a href="/audit" class="inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">{niche.ctaText}</a>
+    </div>
+  </section>
+</Base>

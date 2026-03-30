@@ -1,0 +1,42 @@
+---
+interface Props {
+  items: { question: string; answer: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="divide-y divide-border rounded-xl border border-border">
+  {items.map((item, i) => (
+    <div class="faq-item">
+      <button
+        class="flex w-full items-center justify-between px-6 py-5 text-left transition hover:bg-surface/50"
+        aria-expanded="false"
+        aria-controls={`faq-answer-${i}`}
+      >
+        <span class="pr-4 text-lg font-semibold text-navy">{item.question}</span>
+        <svg class="faq-chevron h-5 w-5 shrink-0 text-muted transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div id={`faq-answer-${i}`} class="faq-answer hidden px-6 pb-5">
+        <p class="text-muted leading-relaxed">{item.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('.faq-item button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement!;
+      const answer = item.querySelector('.faq-answer')!;
+      const chevron = item.querySelector('.faq-chevron')!;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      btn.setAttribute('aria-expanded', (!isOpen).toString());
+      answer.classList.toggle('hidden');
+      chevron.classList.toggle('rotate-180');
+    });
+  });
+</script>

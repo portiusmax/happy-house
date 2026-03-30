@@ -1,0 +1,27 @@
+---
+import Article from '../../layouts/Article.astro';
+import { insights } from '../../data/insights';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return insights
+    .filter((i) => i.status === 'published')
+    .map((article) => ({
+      params: { slug: article.slug },
+      props: { article },
+    }));
+};
+
+const { article } = Astro.props;
+---
+
+<Article
+  title={article.title}
+  description={article.description}
+  niche={article.niche}
+  readTime={article.readTime}
+  publishDate={article.publishDate}
+  slug={article.slug}
+>
+  <Fragment set:html={article.body} />
+</Article>

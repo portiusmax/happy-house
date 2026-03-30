@@ -1,0 +1,47 @@
+---
+interface Props {
+  headline: string;
+  subheadline: string;
+  primaryCta?: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
+  dark?: boolean;
+}
+
+const { headline, subheadline, primaryCta, secondaryCta, dark = true } = Astro.props;
+---
+
+<section class:list={['py-24 md:py-32', dark ? 'bg-navy' : 'bg-white']}>
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="max-w-3xl">
+      <h1 class:list={[
+        'text-[40px] font-extrabold leading-[1.1] md:text-[72px]',
+        dark ? 'text-sky-brand' : 'text-navy'
+      ]}>
+        {headline}
+      </h1>
+      <p class:list={[
+        'mt-6 text-lg md:text-xl leading-relaxed',
+        dark ? 'text-white/80' : 'text-muted'
+      ]}>
+        {subheadline}
+      </p>
+      {(primaryCta || secondaryCta) && (
+        <div class="mt-10 flex flex-wrap gap-4">
+          {primaryCta && (
+            <a href={primaryCta.href} class="inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">
+              {primaryCta.text}
+            </a>
+          )}
+          {secondaryCta && (
+            <a href={secondaryCta.href} class:list={[
+              'inline-block rounded-lg border-2 px-8 py-4 text-lg font-bold transition',
+              dark ? 'border-sky-brand text-sky-brand hover:bg-sky-brand/10' : 'border-sky-brand text-sky-brand hover:bg-sky-brand/10'
+            ]}>
+              {secondaryCta.text}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

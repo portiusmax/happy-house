@@ -1,0 +1,30 @@
+---
+const items = [
+  {
+    title: 'Contractor-only',
+    description: "We don't work with dentists, lawyers, or e-commerce brands. Only home services. That focus means we know your industry, your keywords, and your customers better than any generalist ever could.",
+  },
+  {
+    title: 'Done for you',
+    description: "We don't hand you a strategy and walk away. We write the content, produce the videos, design the assets, optimize for AI, and publish everything. You run your business.",
+  },
+  {
+    title: 'No contracts',
+    description: "Month-to-month. Starting at $5,000/month. We keep your business by delivering results, not by trapping you in a 12-month agreement.",
+  },
+];
+---
+
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">Why contractors choose Happy House</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      {items.map((item) => (
+        <div class="rounded-xl border border-border bg-white p-8 text-center">
+          <h3 class="mb-4 text-xl font-bold text-navy">{item.title}</h3>
+          <p class="text-muted leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

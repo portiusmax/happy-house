@@ -1,0 +1,63 @@
+---
+const niches = [
+  { name: 'Roofing', slug: 'roofing' },
+  { name: 'HVAC', slug: 'hvac' },
+  { name: 'Plumbing', slug: 'plumbing' },
+  { name: 'Water Damage Restoration', slug: 'water-damage-restoration' },
+  { name: 'Electrical', slug: 'electrical' },
+  { name: 'Foundation Repair', slug: 'foundation-repair' },
+  { name: 'Mold Remediation', slug: 'mold-remediation' },
+  { name: 'Pest Control', slug: 'pest-control' },
+];
+---
+
+<footer class="bg-navy text-white">
+  <div class="mx-auto max-w-[1200px] px-6 py-16">
+    <div class="grid gap-12 md:grid-cols-4">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="text-xl font-extrabold text-sky-brand">Happy House</a>
+        <p class="mt-3 text-sm text-white/60">SEO for home services contractors</p>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-white/40">Company</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="/how-it-works" class="text-sm text-white/70 hover:text-white transition-colors">How it works</a>
+          <a href="/about" class="text-sm text-white/70 hover:text-white transition-colors">About</a>
+          <a href="/insights" class="text-sm text-white/70 hover:text-white transition-colors">Insights</a>
+          <a href="/audit" class="text-sm text-white/70 hover:text-white transition-colors">Free audit</a>
+        </nav>
+      </div>
+
+      <!-- Who we serve -->
+      <div>
+        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-white/40">Who we serve</h4>
+        <nav class="flex flex-col gap-2">
+          {niches.map((niche) => (
+            <a href={`/${niche.slug}`} class="text-sm text-white/70 hover:text-white transition-colors">{niche.name}</a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-white/40">Contact</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="/audit" class="text-sm text-white/70 hover:text-white transition-colors">Get a free audit</a>
+          <a href="mailto:hello@happyhouseseo.com" class="text-sm text-white/70 hover:text-white transition-colors">hello@happyhouseseo.com</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
+      <p class="text-sm text-white/40">&copy; 2026 Happy House. Built for contractors.</p>
+      <div class="flex gap-6">
+        <a href="/privacy" class="text-sm text-white/40 hover:text-white/70 transition-colors">Privacy Policy</a>
+        <a href="/terms" class="text-sm text-white/40 hover:text-white/70 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

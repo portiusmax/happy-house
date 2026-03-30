@@ -1,0 +1,224 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import PillarCard from '../components/PillarCard.astro';
+import NicheCard from '../components/NicheCard.astro';
+import AEOSpotlight from '../components/AEOSpotlight.astro';
+import ROICalculator from '../components/ROICalculator.astro';
+import TrustBar from '../components/TrustBar.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Happy House',
+  description: 'SEO agency specializing in home services contractors. Technical SEO, content production, video, design, and AI search optimization.',
+  url: 'https://happyhouseseo.com',
+  priceRange: '$$$',
+  areaServed: 'United States',
+  serviceType: [
+    'Search Engine Optimization',
+    'Content Marketing',
+    'Video Production',
+    'Graphic Design',
+    'Answer Engine Optimization',
+  ],
+};
+
+const niches = [
+  { name: 'Roofing', slug: 'roofing' },
+  { name: 'HVAC', slug: 'hvac' },
+  { name: 'Plumbing', slug: 'plumbing' },
+  { name: 'Water Damage Restoration', slug: 'water-damage-restoration' },
+  { name: 'Electrical', slug: 'electrical' },
+  { name: 'Foundation Repair', slug: 'foundation-repair' },
+  { name: 'Mold Remediation', slug: 'mold-remediation' },
+  { name: 'Pest Control', slug: 'pest-control' },
+];
+
+const nicheCards = [
+  { name: 'Roofing', slug: 'roofing', description: 'Homeowners search immediately after storm damage — on Google and now in AI tools.', avgTicket: '$12,000' },
+  { name: 'HVAC', slug: 'hvac', description: 'Emergency searches happen year-round. AC in summer, furnace in winter. AI Overviews are answering "best HVAC near me" right now.', avgTicket: '$7,500' },
+  { name: 'Plumbing', slug: 'plumbing', description: "Burst pipes don't wait. Emergency search intent is the highest in home services — on every platform.", avgTicket: '$900' },
+  { name: 'Water Damage Restoration', slug: 'water-damage-restoration', description: "Flooding happens at 11pm. If you're not ranking on Google and appearing in AI answers, you're not getting called.", avgTicket: '$8,500' },
+  { name: 'Electrical', slug: 'electrical', description: 'Panel upgrades and EV chargers are driving a new wave of high-intent searches across Google and AI.', avgTicket: '$3,500' },
+  { name: 'Foundation Repair', slug: 'foundation-repair', description: 'High ticket, high anxiety, high research. Homeowners use AI to research before they ever call anyone.', avgTicket: '$8,000' },
+  { name: 'Mold Remediation', slug: 'mold-remediation', description: 'Fear-driven searches with urgent intent. AI tools are answering "is mold dangerous" and citing local contractors.', avgTicket: '$3,200' },
+  { name: 'Pest Control', slug: 'pest-control', description: 'Bed bugs and termites generate immediate high-intent searches — and AI tools are recommending local exterminators.', avgTicket: '$1,500' },
+];
+
+const pillars = [
+  { icon: '\u2699', title: 'Technical SEO', description: "We audit and optimize your site's foundation. Speed, structure, schema, and everything Google needs to trust your site." },
+  { icon: '\u270E', title: 'Content Production', description: 'We write and publish articles, service pages, landing pages, and city pages. A 100+ piece content machine built around your keywords.' },
+  { icon: '\u25B6', title: 'Video Production', description: "Short-form video for Google Business Profile, YouTube, and social. Video signals reinforce your search presence and convert visitors who don't read." },
+  { icon: '\u2605', title: 'Graphic Design', description: 'Custom thumbnails, infographics, and visual assets that make your content stand out and earn more clicks.' },
+  { icon: '\u2726', title: 'AEO / GEO', description: 'We optimize your content to appear in AI-generated answers on ChatGPT, Google AI Overviews, Perplexity, and Bing Copilot. When a homeowner asks an AI who to call, your business gets mentioned.' },
+];
+
+const processSteps = [
+  { title: 'Market audit', description: 'We map your market. Your competitors, their keywords, their rankings, their gaps. You see exactly where the opportunity is — on Google and in AI.' },
+  { title: 'System architecture', description: 'We build your custom content and SEO plan. Keywords, pages, video topics, AI optimization targets, design assets — mapped out for 12 months.' },
+  { title: 'Technical foundation', description: 'We fix your site first. Speed, structure, schema, entity markup. Your foundation has to be solid before content compounds.' },
+  { title: 'Full production', description: "We execute. Articles, landing pages, videos, graphics, AI-optimized Q&A content — published on your site every month. You don't lift a finger." },
+  { title: 'Compound growth', description: 'SEO and AEO compound. Month 3 results are good. Month 12 results change your business. Clients who stay win.' },
+];
+
+const faqItems = [
+  {
+    question: 'How long does SEO take?',
+    answer: "You'll see early movement in months 2–3. Real traction in months 4–6. The kind of results that change your business in months 8–12. We set this expectation on day one.",
+  },
+  {
+    question: 'What is AEO/GEO and do I actually need it?',
+    answer: "AEO is Answer Engine Optimization — optimizing your content to appear in AI-generated answers on tools like ChatGPT, Google AI Overviews, and Perplexity. GEO is Generative Engine Optimization, the broader discipline. You need it because search behavior is shifting. Homeowners are asking AI tools for contractor recommendations right now. The contractors who show up in those answers will have a serious advantage over the next 3–5 years. We build this into every piece of content we produce.",
+  },
+  {
+    question: "We tried SEO before and it didn't work.",
+    answer: "That's because you hired a generalist who treated your roofing company like a dentist's office. We only work with contractors. The keywords, the content, the AI optimization — it's all built for your industry.",
+  },
+  {
+    question: 'How much does it cost?',
+    answer: "Happy House starts at $5,000/month with no contracts. Scope varies based on your market size, competition level, and how aggressively you want to grow. We'll give you a clear number after your free market audit.",
+  },
+  {
+    question: 'Do I have to sign a contract?',
+    answer: "No. Month-to-month. We'd rather earn your business every month than lock you in.",
+  },
+  {
+    question: 'What if I\'m in a competitive market?',
+    answer: "Competitive markets have more to win. More searches, more AI answers to appear in, more leads available. We've built systems that outrank national franchises. Competition isn't a reason to avoid SEO — it's a reason to start now.",
+  },
+];
+---
+
+<Base
+  title="Happy House — SEO for Home Services Contractors"
+  description="Happy House builds full search acquisition systems for home services contractors. Technical SEO, content, video, design, and AI search visibility. Starting at $5,000/month."
+  schema={localBusinessSchema}
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <Hero
+    headline="More leads from Google. Built for contractors."
+    subheadline="Happy House builds full search acquisition systems for home services contractors. Technical SEO, content, video, design, and AI search visibility — all done for you. Starting at $5,000/month."
+    primaryCta={{ text: 'Get a free market audit', href: '/audit' }}
+    secondaryCta={{ text: 'See how it works', href: '#process' }}
+  />
+
+  <!-- Niche Marquee -->
+  <div class="overflow-hidden border-y border-border bg-surface py-4">
+    <div class="marquee-track flex gap-12 whitespace-nowrap">
+      {[...niches, ...niches].map((niche) => (
+        <a href={`/${niche.slug}`} class="text-sm font-semibold text-navy/60 transition hover:text-sky-brand">
+          {niche.name}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <style>
+    .marquee-track {
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+  <!-- Problem Section -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">Most contractors are invisible on Google.<br />And now they're invisible to AI too.</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-xl border border-border bg-white p-8">
+          <h3 class="mb-3 text-lg font-bold text-navy">The wrong agency</h3>
+          <p class="text-muted">You're paying a generalist agency that doesn't understand your industry, your seasons, or your customers.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-white p-8">
+          <h3 class="mb-3 text-lg font-bold text-navy">Outranked by competitors</h3>
+          <p class="text-muted">Your competitor ranks #1 in your city and you don't know what they're doing differently.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-white p-8">
+          <h3 class="mb-3 text-lg font-bold text-navy">Missing from AI answers</h3>
+          <p class="text-muted">AI tools like ChatGPT and Google's AI Overviews are answering contractor questions — and your business isn't being mentioned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <h2 class="mb-4 text-center text-[32px] font-bold text-navy md:text-[40px]">One system. Five pillars. One goal — more leads.</h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {pillars.slice(0, 3).map((p) => (
+          <PillarCard title={p.title} description={p.description} icon={p.icon} />
+        ))}
+      </div>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 md:mx-auto md:max-w-[800px]">
+        {pillars.slice(3).map((p) => (
+          <PillarCard title={p.title} description={p.description} icon={p.icon} />
+        ))}
+      </div>
+      <p class="mt-10 text-center text-muted max-w-2xl mx-auto">Most agencies do one of these. We do all five because leads come from systems, not tactics — and the search landscape is changing fast.</p>
+    </div>
+  </section>
+
+  <!-- AEO/GEO Spotlight -->
+  <AEOSpotlight />
+
+  <!-- Process -->
+  <section id="process" class="bg-white py-24">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">How Happy House works</h2>
+      <div class="mx-auto max-w-3xl space-y-8">
+        {processSteps.map((step, i) => (
+          <div class="flex gap-6">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-brand text-lg font-bold text-white">{i + 1}</div>
+            <div>
+              <h3 class="mb-2 text-xl font-bold text-navy">{step.title}</h3>
+              <p class="text-muted leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Niches -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">We only work with home services contractors</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {nicheCards.map((niche) => (
+          <NicheCard name={niche.name} slug={niche.slug} description={niche.description} avgTicket={niche.avgTicket} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator -->
+  <ROICalculator />
+
+  <!-- Trust -->
+  <TrustBar />
+
+  <!-- FAQ -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">Common questions</h2>
+      <FAQAccordion items={faqItems} />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-navy py-24">
+    <div class="mx-auto max-w-[800px] px-6 text-center">
+      <h2 class="mb-4 text-[32px] font-bold text-white md:text-[40px]">Your competitors are building their search presence right now.</h2>
+      <p class="mb-8 text-lg text-white/70">On Google. And in AI. Every month you wait is a month they pull further ahead. Get a free market audit and see exactly where you stand.</p>
+      <a href="/audit" class="inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">Get my free market audit</a>
+    </div>
+  </section>
+</Base>

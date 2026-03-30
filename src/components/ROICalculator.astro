@@ -1,0 +1,112 @@
+---
+---
+
+<section class="bg-white py-24" id="roi">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="text-center">
+      <h2 class="mb-3 text-[32px] font-bold text-navy md:text-[40px]">Run the numbers</h2>
+      <p class="text-lg text-muted">See what a full search acquisition system is worth to your business.</p>
+    </div>
+
+    <div class="mx-auto mt-12 max-w-2xl">
+      <!-- Sliders -->
+      <div class="space-y-8">
+        <div>
+          <div class="mb-2 flex items-center justify-between">
+            <label for="job-value" class="font-semibold text-navy">Average job value</label>
+            <span id="job-value-display" class="text-lg font-bold text-sky-brand">$5,000</span>
+          </div>
+          <input
+            type="range"
+            id="job-value"
+            min="500"
+            max="20000"
+            step="500"
+            value="5000"
+            class="w-full accent-sky-brand"
+          />
+          <div class="mt-1 flex justify-between text-xs text-muted">
+            <span>$500</span>
+            <span>$20,000</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-2 flex items-center justify-between">
+            <label for="customers" class="font-semibold text-navy">New customers from search per month</label>
+            <span id="customers-display" class="text-lg font-bold text-sky-brand">8</span>
+          </div>
+          <input
+            type="range"
+            id="customers"
+            min="1"
+            max="30"
+            step="1"
+            value="8"
+            class="w-full accent-sky-brand"
+          />
+          <div class="mt-1 flex justify-between text-xs text-muted">
+            <span>1</span>
+            <span>30</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div class="rounded-xl border border-border bg-surface p-5 text-center">
+          <p class="text-sm text-muted">Monthly revenue</p>
+          <p id="monthly-revenue" class="mt-1 text-2xl font-bold text-navy">$40,000</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5 text-center">
+          <p class="text-sm text-muted">Annual revenue</p>
+          <p id="annual-revenue" class="mt-1 text-2xl font-bold text-navy">$480,000</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5 text-center">
+          <p class="text-sm text-muted">Annual ROI</p>
+          <p id="annual-roi" class="mt-1 text-2xl font-bold text-sky-brand">$420,000</p>
+        </div>
+        <div class="rounded-xl border border-yellow-dark bg-yellow-light p-5 text-center">
+          <p class="text-sm text-navy/60">ROI multiple</p>
+          <p id="roi-multiple" class="mt-1 text-2xl font-bold text-navy">8x return</p>
+        </div>
+      </div>
+
+      <p class="mt-6 text-center text-sm text-muted">Pricing starts at $5,000/month. One new customer per month from search pays for Happy House. Everything after that is growth.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const jobValue = document.getElementById('job-value') as HTMLInputElement;
+  const customers = document.getElementById('customers') as HTMLInputElement;
+  const jobDisplay = document.getElementById('job-value-display')!;
+  const custDisplay = document.getElementById('customers-display')!;
+  const monthlyEl = document.getElementById('monthly-revenue')!;
+  const annualEl = document.getElementById('annual-revenue')!;
+  const roiEl = document.getElementById('annual-roi')!;
+  const multipleEl = document.getElementById('roi-multiple')!;
+
+  function fmt(n: number) {
+    return '$' + n.toLocaleString('en-US');
+  }
+
+  function calc() {
+    const jv = parseInt(jobValue.value);
+    const c = parseInt(customers.value);
+    const monthly = jv * c;
+    const annual = monthly * 12;
+    const roi = annual - 60000;
+    const multiple = annual / 60000;
+
+    jobDisplay.textContent = fmt(jv);
+    custDisplay.textContent = c.toString();
+    monthlyEl.textContent = fmt(monthly);
+    annualEl.textContent = fmt(annual);
+    roiEl.textContent = fmt(roi);
+    multipleEl.textContent = multiple.toFixed(0) + 'x return';
+  }
+
+  jobValue.addEventListener('input', calc);
+  customers.addEventListener('input', calc);
+</script>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://happyhouseseo.com/sitemap-index.xml

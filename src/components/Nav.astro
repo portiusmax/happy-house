@@ -1,0 +1,84 @@
+---
+const niches = [
+  { name: 'Roofing', slug: 'roofing' },
+  { name: 'HVAC', slug: 'hvac' },
+  { name: 'Plumbing', slug: 'plumbing' },
+  { name: 'Water Damage Restoration', slug: 'water-damage-restoration' },
+  { name: 'Electrical', slug: 'electrical' },
+  { name: 'Foundation Repair', slug: 'foundation-repair' },
+  { name: 'Mold Remediation', slug: 'mold-remediation' },
+  { name: 'Pest Control', slug: 'pest-control' },
+];
+---
+
+<header id="site-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-border">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="flex h-18 items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="text-xl font-extrabold text-sky-brand">Happy House</a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden items-center gap-8 md:flex">
+        <a href="/how-it-works" class="text-sm font-medium text-body hover:text-sky-brand transition-colors">How it works</a>
+
+        <!-- Who we serve dropdown -->
+        <div class="group relative">
+          <button class="flex items-center gap-1 text-sm font-medium text-body hover:text-sky-brand transition-colors">
+            Who we serve
+            <svg class="h-4 w-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="invisible absolute left-0 top-full w-64 rounded-xl border border-border bg-white p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+            {niches.map((niche) => (
+              <a href={`/${niche.slug}`} class="block rounded-lg px-4 py-2 text-sm text-body hover:bg-surface hover:text-sky-brand transition-colors">{niche.name}</a>
+            ))}
+          </div>
+        </div>
+
+        <a href="/insights" class="text-sm font-medium text-body hover:text-sky-brand transition-colors">Insights</a>
+        <a href="/audit" class="rounded-lg bg-yellow-brand px-5 py-2.5 text-sm font-bold text-navy transition hover:brightness-110">Free audit</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden" aria-label="Toggle menu">
+        <svg id="menu-icon-open" class="h-6 w-6 text-body" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="menu-icon-close" class="hidden h-6 w-6 text-body" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <div class="border-t border-border bg-white px-6 py-6">
+      <nav class="flex flex-col gap-4">
+        <a href="/how-it-works" class="text-lg font-medium text-body">How it works</a>
+        <div class="border-t border-border pt-4">
+          <p class="mb-2 text-sm font-semibold text-muted uppercase tracking-wide">Who we serve</p>
+          {niches.map((niche) => (
+            <a href={`/${niche.slug}`} class="block py-2 text-lg text-body">{niche.name}</a>
+          ))}
+        </div>
+        <div class="border-t border-border pt-4">
+          <a href="/insights" class="block py-2 text-lg font-medium text-body">Insights</a>
+        </div>
+        <a href="/audit" class="mt-2 block rounded-lg bg-yellow-brand px-5 py-3 text-center text-lg font-bold text-navy">Free audit</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer for fixed nav -->
+<div class="h-18"></div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+  });
+</script>

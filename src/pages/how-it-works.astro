@@ -1,0 +1,236 @@
+---
+import Base from '../layouts/Base.astro';
+
+const faqItems = [
+  { question: 'What does AEO stand for?', answer: 'Answer Engine Optimization — optimizing your content so it appears in AI-generated answers on platforms like ChatGPT, Google AI Overviews, and Perplexity.' },
+  { question: 'What does GEO stand for?', answer: 'Generative Engine Optimization — the broader discipline of optimizing content for AI-powered search engines that generate answers rather than just listing links.' },
+  { question: 'What is the difference between AEO and GEO?', answer: 'AEO focuses specifically on getting your content cited in AI answer boxes. GEO is the broader strategy of optimizing for generative AI search engines overall — including how your entity is represented, how your content is structured, and how authoritative your digital presence appears to AI systems. Happy House does both.' },
+];
+---
+
+<Base
+  title="How It Works | Happy House — SEO for Contractors"
+  description="See how Happy House builds full search acquisition systems for home services contractors. Five pillars: Technical SEO, content, video, design, and AI search optimization."
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-navy py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="max-w-3xl">
+        <h1 class="text-[40px] font-extrabold leading-[1.1] text-sky-brand md:text-[64px]">How Happy House works</h1>
+        <p class="mt-6 text-lg text-white/80 md:text-xl">Five pillars. One integrated system. Every piece works together to generate more leads from Google and AI search.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical SEO -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <span class="mb-4 inline-block rounded-md bg-sky-light px-3 py-1 text-sm font-semibold text-sky-darker">Pillar 1</span>
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">Technical SEO</h2>
+      <p class="mb-6 text-muted leading-relaxed">The foundation everything else is built on. Google won't rank content on a broken site.</p>
+
+      <h3 class="mb-3 text-lg font-bold text-navy">What's included</h3>
+      <ul class="mb-6 space-y-2 text-muted">
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Full site audit</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Page speed optimization</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Core Web Vitals fixes</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Schema markup implementation</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Crawl error fixes</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Site architecture optimization</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Internal linking structure</li>
+      </ul>
+
+      <div class="rounded-xl border border-border bg-surface p-6">
+        <p class="text-sm font-semibold text-navy">Why it matters</p>
+        <p class="mt-2 text-sm text-muted">Speed, structure, and schema are the prerequisites for ranking. Without a solid technical foundation, content doesn't compound and AI engines can't parse your site properly. We fix the foundation first so everything else works.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Production -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <span class="mb-4 inline-block rounded-md bg-sky-light px-3 py-1 text-sm font-semibold text-sky-darker">Pillar 2</span>
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">Content Production</h2>
+      <p class="mb-6 text-muted leading-relaxed">Content is the machine. Volume and quality together build topical authority — and topical authority is what Google and AI tools use to decide who ranks and who gets cited.</p>
+
+      <h3 class="mb-3 text-lg font-bold text-navy">What's included</h3>
+      <ul class="mb-6 space-y-2 text-muted">
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Keyword research and content calendar</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Blog article writing and publishing</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Service page creation</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Landing page copywriting</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> City pages for every market</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Direct publishing to your CMS</li>
+      </ul>
+
+      <div class="rounded-xl border border-border bg-white p-6">
+        <p class="text-sm font-semibold text-navy">Why it matters</p>
+        <p class="mt-2 text-sm text-muted">Content is what Google indexes and AI tools read. Without a constant stream of high-quality, keyword-targeted content, you can't build the authority needed to rank or be cited. We write and publish it all — you don't lift a finger.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Production -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <span class="mb-4 inline-block rounded-md bg-sky-light px-3 py-1 text-sm font-semibold text-sky-darker">Pillar 3</span>
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">Video Production</h2>
+      <p class="mb-6 text-muted leading-relaxed">Video reinforces search presence and converts visitors who don't read. Google Business Profile listings with video get significantly more engagement.</p>
+
+      <h3 class="mb-3 text-lg font-bold text-navy">What's included</h3>
+      <ul class="mb-6 space-y-2 text-muted">
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Short-form video scripts</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Video production coordination</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Google Business Profile video uploads</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> YouTube optimization</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Social media distribution</li>
+      </ul>
+
+      <div class="rounded-xl border border-border bg-surface p-6">
+        <p class="text-sm font-semibold text-navy">Why it matters</p>
+        <p class="mt-2 text-sm text-muted">Video content on your Google Business Profile signals activity and quality to Google. It also converts visitors who prefer watching over reading — which is increasingly the majority.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Graphic Design -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <span class="mb-4 inline-block rounded-md bg-sky-light px-3 py-1 text-sm font-semibold text-sky-darker">Pillar 4</span>
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">Graphic Design</h2>
+      <p class="mb-6 text-muted leading-relaxed">Visual content earns more clicks, more shares, and more backlinks than text alone.</p>
+
+      <h3 class="mb-3 text-lg font-bold text-navy">What's included</h3>
+      <ul class="mb-6 space-y-2 text-muted">
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Article header images</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Infographics</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Social media assets</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Video thumbnails</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Before/after project graphics</li>
+      </ul>
+
+      <div class="rounded-xl border border-border bg-white p-6">
+        <p class="text-sm font-semibold text-navy">Why it matters</p>
+        <p class="mt-2 text-sm text-muted">Visuals make your content stand out in search results and on social media. Custom graphics earn more engagement than stock photos, and infographics are among the most shared content types on the web.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO / GEO -->
+  <section id="aeo" class="bg-white py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <span class="mb-4 inline-block rounded-md bg-yellow-brand px-3 py-1 text-sm font-bold text-navy">Pillar 5 — The future</span>
+      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">AEO / GEO — AI Search Optimization</h2>
+      <p class="mb-6 text-muted leading-relaxed">Optimizing your content to appear in AI-generated answers across ChatGPT, Google AI Overviews, Perplexity, Bing Copilot, and other AI search surfaces.</p>
+
+      <h3 class="mb-3 text-lg font-bold text-navy">What's included</h3>
+      <ul class="mb-6 space-y-2 text-muted">
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Structured Q&A content creation</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> FAQ schema markup</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Entity optimization</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Authoritative citation building</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> AI-readable content formatting</li>
+        <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> AI answer monitoring (ChatGPT, Perplexity, Google AI Overviews)</li>
+      </ul>
+
+      <div class="rounded-xl border-2 border-yellow-brand bg-yellow-light p-6">
+        <p class="text-sm font-bold text-navy">Why it matters</p>
+        <p class="mt-2 text-sm text-navy/70">AI tools are already recommending local contractors. The window to be an early mover is now. Contractors who establish authority in AI answers before their competitors will have a durable lead generation advantage for years.</p>
+      </div>
+
+      <div class="mt-8 rounded-xl border border-border bg-surface p-6">
+        <h3 class="mb-3 text-lg font-bold text-navy">AEO vs GEO — what's the difference?</h3>
+        <p class="mb-3 text-muted"><strong>AEO (Answer Engine Optimization)</strong> focuses specifically on getting your content cited in AI-generated answer boxes — like when ChatGPT or Google AI Overviews directly answer a question about your service area.</p>
+        <p class="text-muted"><strong>GEO (Generative Engine Optimization)</strong> is the broader strategy of optimizing your entire digital presence for AI-powered search engines. This includes entity representation, content structure, authority signals, and how AI systems perceive your business overall. Happy House does both — because they work together.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-12 text-[32px] font-bold text-navy md:text-[40px]">Month-by-month timeline</h2>
+      <div class="space-y-6">
+        {[
+          { month: 'Month 1', title: 'Audit & Architecture', description: 'Full market audit. Competitor analysis. Technical foundation fixes. Custom 12-month plan built.' },
+          { month: 'Month 2', title: 'Production Begins', description: 'First content pieces published. GBP optimization. Keyword targeting begins.' },
+          { month: 'Month 3', title: 'Velocity Increases', description: 'Content production at full speed. Video production begins. First ranking movements visible.' },
+          { month: 'Months 4–6', title: 'Compounding', description: 'Content compounding. AI optimization layer added. Rankings growing. Lead flow starting.' },
+          { month: 'Months 7–12', title: 'Full System Running', description: 'Topical authority established. AI citations growing. Consistent leads. Compounding returns.' },
+        ].map((step) => (
+          <div class="flex gap-6">
+            <div class="w-24 shrink-0 text-sm font-bold text-sky-brand">{step.month}</div>
+            <div>
+              <h3 class="font-bold text-navy">{step.title}</h3>
+              <p class="text-muted">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What client handles vs Happy House -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-12 text-[32px] font-bold text-navy md:text-[40px]">What you handle vs. what we handle</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="rounded-xl border border-border bg-surface p-6">
+          <h3 class="mb-4 text-lg font-bold text-navy">You handle</h3>
+          <ul class="space-y-2 text-muted">
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Provide site access</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Approve content before publishing</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Answer occasional questions about your business</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border-2 border-sky-brand bg-white p-6">
+          <h3 class="mb-4 text-lg font-bold text-navy">Happy House handles</h3>
+          <ul class="space-y-2 text-muted">
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Research and keyword strategy</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> All content writing and publishing</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Video production and distribution</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Graphic design</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Technical SEO and site optimization</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> AI search optimization</li>
+            <li class="flex gap-2"><span class="text-sky-brand">&#10003;</span> Monthly reporting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Monthly Deliverables -->
+  <section class="bg-surface py-24">
+    <div class="mx-auto max-w-[800px] px-6">
+      <h2 class="mb-12 text-[32px] font-bold text-navy md:text-[40px]">Monthly deliverables</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {[
+          '4–8 articles published',
+          '2–4 landing/service pages',
+          '4–8 short-form videos',
+          '8–12 graphic assets',
+          'GBP optimization updates',
+          'Monthly ranking & traffic report',
+          'AI visibility report',
+        ].map((item) => (
+          <div class="flex items-center gap-3 rounded-lg border border-border bg-white px-5 py-4">
+            <span class="text-sky-brand font-bold">&#10003;</span>
+            <span class="text-navy font-medium">{item}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-center text-sm text-muted">Exact scope varies by plan and market. Ranges shown are typical.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-navy py-24">
+    <div class="mx-auto max-w-[800px] px-6 text-center">
+      <h2 class="mb-4 text-[32px] font-bold text-white md:text-[40px]">Ready to build your search acquisition system?</h2>
+      <p class="mb-8 text-lg text-white/70">Get a free market audit. We'll show you where you stand on Google and in AI — and what it would take to win.</p>
+      <a href="/audit" class="inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">Get my free market audit</a>
+    </div>
+  </section>
+</Base>

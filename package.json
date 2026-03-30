@@ -1,0 +1,19 @@
+{
+  "name": "happy-house",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "@fontsource/inter": "^5.2.8",
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.50",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^5.18.1",
+    "tailwindcss": "^4.2.2"
+  }
+}
