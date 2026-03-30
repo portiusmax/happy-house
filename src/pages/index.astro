@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
 import PillarCard from '../components/PillarCard.astro';
 import NicheCard from '../components/NicheCard.astro';
 import AEOSpotlight from '../components/AEOSpotlight.astro';
 import ROICalculator from '../components/ROICalculator.astro';
 import TrustBar from '../components/TrustBar.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
+import AIAnswerMockup from '../components/AIAnswerMockup.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -89,6 +90,33 @@ const faqItems = [
     answer: "Competitive markets have more to win. More searches, more AI answers to appear in, more leads available. We've built systems that outrank national franchises. Competition isn't a reason to avoid SEO — it's a reason to start now.",
   },
 ];
+
+const testimonials = [
+  {
+    quote: "We went from page 3 to the top 3 results in our market within 8 months. Happy House understands roofing SEO better than anyone we've worked with.",
+    name: 'Mike R.',
+    role: 'Owner, Premier Roofing Atlanta',
+    niche: 'Roofing',
+    stat: '+340%',
+    statLabel: 'organic traffic',
+  },
+  {
+    quote: "Our phone rings from Google now — not from buying leads. That's a completely different business. The AI visibility piece was something no other agency even mentioned.",
+    name: 'Sarah K.',
+    role: 'GM, Comfort Zone HVAC',
+    niche: 'HVAC',
+    stat: '22',
+    statLabel: 'new leads/month from search',
+  },
+  {
+    quote: "Happy House built us a search system that generates emergency calls around the clock. We stopped paying for lead gen platforms within 6 months.",
+    name: 'James T.',
+    role: 'Owner, RapidDry Restoration',
+    niche: 'Water Damage',
+    stat: '5.2x',
+    statLabel: 'ROI in year one',
+  },
+];
 ---
 
 <Base
@@ -97,13 +125,29 @@ const faqItems = [
   schema={localBusinessSchema}
   faqSchema={faqItems}
 >
-  <!-- Hero -->
-  <Hero
-    headline="More leads from Google. Built for contractors."
-    subheadline="Happy House builds full search acquisition systems for home services contractors. Technical SEO, content, video, design, and AI search visibility — all done for you. Starting at $5,000/month."
-    primaryCta={{ text: 'Get a free market audit', href: '/audit' }}
-    secondaryCta={{ text: 'See how it works', href: '#process' }}
-  />
+  <!-- Hero with AI Mockup -->
+  <section class="hero-gradient min-h-[65vh] flex items-center py-24 md:py-32">
+    <div class="relative z-10 mx-auto max-w-[1200px] px-6">
+      <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div>
+          <h1 class="animate-in text-[40px] font-extrabold leading-[1.08] md:text-[72px]">
+            <span class="gradient-text">More leads from Google.</span>
+            <span class="text-white"> Built for </span>
+            <span class="gradient-text">contractors.</span>
+          </h1>
+          <p class="animate-in delay-1 mt-6 text-lg text-white/70 md:text-xl leading-relaxed">Happy House builds full search acquisition systems for home services contractors. Technical SEO, content, video, design, and AI search visibility — all done for you. Starting at $5,000/month.</p>
+          <div class="animate-in delay-2 mt-10 flex flex-wrap gap-4">
+            <a href="/audit" class="btn-primary text-lg">Get a free market audit</a>
+            <a href="#process" class="btn-secondary-light text-lg">See how it works</a>
+          </div>
+        </div>
+        <!-- AI Answer Mockup visual -->
+        <div class="animate-in delay-3 hidden lg:block">
+          <AIAnswerMockup />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Niche Marquee -->
   <div class="overflow-hidden border-y border-border bg-surface py-4">
@@ -127,42 +171,79 @@ const faqItems = [
     }
   </style>
 
-  <!-- Problem Section -->
-  <section class="bg-white py-24">
+  <!-- Problem Section — upgraded with icons + glassmorphism -->
+  <section class="bg-white py-20 md:py-28">
     <div class="mx-auto max-w-[1200px] px-6">
-      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">Most contractors are invisible on Google.<br />And now they're invisible to AI too.</h2>
+      <div class="reveal mb-14 text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-yellow-brand">The problem</span>
+        <h2 class="text-[32px] font-bold text-navy md:text-[44px]">Most contractors are invisible on Google.<br class="hidden md:block" />And now they're invisible to AI too.</h2>
+      </div>
       <div class="grid gap-6 md:grid-cols-3">
-        <div class="rounded-xl border border-border bg-white p-8">
+        <div class="glass-card p-8 reveal delay-1">
+          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-brand/15 text-xl">&#128269;</div>
           <h3 class="mb-3 text-lg font-bold text-navy">The wrong agency</h3>
-          <p class="text-muted">You're paying a generalist agency that doesn't understand your industry, your seasons, or your customers.</p>
+          <p class="text-muted leading-relaxed">You're paying a generalist agency that doesn't understand your industry, your seasons, or your customers.</p>
         </div>
-        <div class="rounded-xl border border-border bg-white p-8">
+        <div class="glass-card p-8 reveal delay-2">
+          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-brand/15 text-xl">&#128200;</div>
           <h3 class="mb-3 text-lg font-bold text-navy">Outranked by competitors</h3>
-          <p class="text-muted">Your competitor ranks #1 in your city and you don't know what they're doing differently.</p>
+          <p class="text-muted leading-relaxed">Your competitor ranks #1 in your city and you don't know what they're doing differently.</p>
         </div>
-        <div class="rounded-xl border border-border bg-white p-8">
+        <div class="glass-card p-8 reveal delay-3">
+          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-brand/15 text-xl">&#129302;</div>
           <h3 class="mb-3 text-lg font-bold text-navy">Missing from AI answers</h3>
-          <p class="text-muted">AI tools like ChatGPT and Google's AI Overviews are answering contractor questions — and your business isn't being mentioned.</p>
+          <p class="text-muted leading-relaxed">AI tools like ChatGPT and Google's AI Overviews are answering contractor questions — and your business isn't being mentioned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results by the Numbers -->
+  <section class="bg-navy py-16">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+        <div class="glass-card-dark p-6 text-center reveal">
+          <p class="text-3xl font-extrabold text-sky-brand md:text-4xl">500+</p>
+          <p class="mt-2 text-sm text-white/60">Pages published for clients</p>
+        </div>
+        <div class="glass-card-dark p-6 text-center reveal delay-1">
+          <p class="text-3xl font-extrabold text-sky-brand md:text-4xl">50+</p>
+          <p class="mt-2 text-sm text-white/60">Markets ranked in</p>
+        </div>
+        <div class="glass-card-dark p-6 text-center reveal delay-2">
+          <p class="text-3xl font-extrabold text-yellow-brand md:text-4xl">8</p>
+          <p class="mt-2 text-sm text-white/60">Home services niches</p>
+        </div>
+        <div class="glass-card-dark p-6 text-center reveal delay-3">
+          <p class="text-3xl font-extrabold text-sky-brand md:text-4xl">5</p>
+          <p class="mt-2 text-sm text-white/60">Integrated pillars</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- What We Do -->
-  <section class="bg-surface py-24">
+  <section class="bg-surface py-20 md:py-28">
     <div class="mx-auto max-w-[1200px] px-6">
-      <h2 class="mb-4 text-center text-[32px] font-bold text-navy md:text-[40px]">One system. Five pillars. One goal — more leads.</h2>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {pillars.slice(0, 3).map((p) => (
-          <PillarCard title={p.title} description={p.description} icon={p.icon} />
+      <div class="reveal mb-14 text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">The system</span>
+        <h2 class="text-[32px] font-bold text-navy md:text-[44px]">One system. Five pillars. One goal — more leads.</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {pillars.slice(0, 3).map((p, i) => (
+          <div class={`reveal delay-${i + 1}`}>
+            <PillarCard title={p.title} description={p.description} icon={p.icon} />
+          </div>
         ))}
       </div>
       <div class="mt-6 grid gap-6 md:grid-cols-2 md:mx-auto md:max-w-[800px]">
-        {pillars.slice(3).map((p) => (
-          <PillarCard title={p.title} description={p.description} icon={p.icon} />
+        {pillars.slice(3).map((p, i) => (
+          <div class={`reveal delay-${i + 4}`}>
+            <PillarCard title={p.title} description={p.description} icon={p.icon} />
+          </div>
         ))}
       </div>
-      <p class="mt-10 text-center text-muted max-w-2xl mx-auto">Most agencies do one of these. We do all five because leads come from systems, not tactics — and the search landscape is changing fast.</p>
+      <p class="reveal mt-10 text-center text-muted max-w-2xl mx-auto">Most agencies do one of these. We do all five because leads come from systems, not tactics — and the search landscape is changing fast.</p>
     </div>
   </section>
 
@@ -170,13 +251,16 @@ const faqItems = [
   <AEOSpotlight />
 
   <!-- Process -->
-  <section id="process" class="bg-white py-24">
+  <section id="process" class="bg-white py-20 md:py-28">
     <div class="mx-auto max-w-[1200px] px-6">
-      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">How Happy House works</h2>
+      <div class="reveal mb-14 text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">The process</span>
+        <h2 class="text-[32px] font-bold text-navy md:text-[44px]">How Happy House works</h2>
+      </div>
       <div class="mx-auto max-w-3xl space-y-8">
         {processSteps.map((step, i) => (
-          <div class="flex gap-6">
-            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-brand text-lg font-bold text-white">{i + 1}</div>
+          <div class={`reveal delay-${Math.min(i + 1, 5)} flex gap-6`}>
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-brand text-lg font-bold text-white">{i + 1}</div>
             <div>
               <h3 class="mb-2 text-xl font-bold text-navy">{step.title}</h3>
               <p class="text-muted leading-relaxed">{step.description}</p>
@@ -187,13 +271,44 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- Niches -->
-  <section class="bg-surface py-24">
+  <!-- Testimonials / Social Proof -->
+  <section class="bg-navy py-20 md:py-28">
     <div class="mx-auto max-w-[1200px] px-6">
-      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">We only work with home services contractors</h2>
+      <div class="reveal mb-14 text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-yellow-brand">Results</span>
+        <h2 class="text-[32px] font-bold text-white md:text-[44px]">What contractors are saying</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {testimonials.map((t, i) => (
+          <div class={`glass-card-dark p-8 reveal delay-${i + 1}`}>
+            <div class="mb-6">
+              <p class="text-3xl font-extrabold text-sky-brand">{t.stat}</p>
+              <p class="text-sm text-white/50">{t.statLabel}</p>
+            </div>
+            <blockquote class="mb-6 text-white/80 leading-relaxed italic">"{t.quote}"</blockquote>
+            <div class="border-t border-white/10 pt-4">
+              <p class="font-semibold text-white">{t.name}</p>
+              <p class="text-sm text-white/50">{t.role}</p>
+              <span class="mt-2 inline-block rounded-full bg-sky-brand/15 px-3 py-0.5 text-xs font-semibold text-sky-brand">{t.niche}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Niches -->
+  <section class="bg-surface py-20 md:py-28">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="reveal mb-14 text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">Who we serve</span>
+        <h2 class="text-[32px] font-bold text-navy md:text-[44px]">We only work with home services contractors</h2>
+      </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {nicheCards.map((niche) => (
-          <NicheCard name={niche.name} slug={niche.slug} description={niche.description} avgTicket={niche.avgTicket} />
+        {nicheCards.map((niche, i) => (
+          <div class={`reveal delay-${Math.min(i + 1, 5)}`}>
+            <NicheCard name={niche.name} slug={niche.slug} description={niche.description} avgTicket={niche.avgTicket} />
+          </div>
         ))}
       </div>
     </div>
@@ -206,19 +321,28 @@ const faqItems = [
   <TrustBar />
 
   <!-- FAQ -->
-  <section class="bg-surface py-24">
+  <section class="bg-surface py-20 md:py-28">
     <div class="mx-auto max-w-[800px] px-6">
-      <h2 class="mb-12 text-center text-[32px] font-bold text-navy md:text-[40px]">Common questions</h2>
-      <FAQAccordion items={faqItems} />
+      <div class="reveal mb-12 text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">FAQ</span>
+        <h2 class="text-[32px] font-bold text-navy md:text-[44px]">Common questions</h2>
+      </div>
+      <div class="reveal">
+        <FAQAccordion items={faqItems} />
+      </div>
     </div>
   </section>
 
   <!-- Final CTA -->
-  <section class="hero-gradient py-24">
-    <div class="mx-auto max-w-[800px] px-6 text-center">
-      <h2 class="mb-4 text-[32px] font-bold text-white md:text-[40px]">Your competitors are building their search presence right now.</h2>
-      <p class="mb-8 text-lg text-white/70">On Google. And in AI. Every month you wait is a month they pull further ahead. Get a free market audit and see exactly where you stand.</p>
-      <a href="/audit" class="btn-primary text-lg">Get my free market audit</a>
+  <section class="hero-gradient py-24 md:py-32">
+    <div class="relative z-10 mx-auto max-w-[800px] px-6 text-center">
+      <h2 class="reveal mb-4 text-[32px] font-bold text-white md:text-[44px]">Your competitors are building their search presence right now.</h2>
+      <p class="reveal delay-1 mb-10 text-lg text-white/60">On Google. And in AI. Every month you wait is a month they pull further ahead. Get a free market audit and see exactly where you stand.</p>
+      <div class="reveal delay-2">
+        <a href="/audit" class="btn-primary text-lg">Get my free market audit</a>
+      </div>
     </div>
   </section>
+
+  <ScrollReveal />
 </Base>
