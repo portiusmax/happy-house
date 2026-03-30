@@ -10,33 +10,30 @@ interface Props {
 const { headline, subheadline, primaryCta, secondaryCta, dark = true } = Astro.props;
 ---
 
-<section class:list={['py-24 md:py-32', dark ? 'bg-navy' : 'bg-white']}>
-  <div class="mx-auto max-w-[1200px] px-6">
+<section class:list={[dark ? 'hero-gradient min-h-[65vh] flex items-center' : 'bg-white', 'py-24 md:py-32']}>
+  <div class="relative z-10 mx-auto max-w-[1200px] px-6">
     <div class="max-w-3xl">
       <h1 class:list={[
-        'text-[40px] font-extrabold leading-[1.1] md:text-[72px]',
-        dark ? 'text-sky-brand' : 'text-navy'
+        'animate-in text-[40px] font-extrabold leading-[1.08] md:text-[72px]',
+        dark ? 'gradient-text' : 'text-navy'
       ]}>
         {headline}
       </h1>
       <p class:list={[
-        'mt-6 text-lg md:text-xl leading-relaxed',
-        dark ? 'text-white/80' : 'text-muted'
+        'animate-in delay-1 mt-6 text-lg md:text-xl leading-relaxed',
+        dark ? 'text-white/70' : 'text-muted'
       ]}>
         {subheadline}
       </p>
       {(primaryCta || secondaryCta) && (
-        <div class="mt-10 flex flex-wrap gap-4">
+        <div class="animate-in delay-2 mt-10 flex flex-wrap gap-4">
           {primaryCta && (
-            <a href={primaryCta.href} class="inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">
+            <a href={primaryCta.href} class="btn-primary text-lg">
               {primaryCta.text}
             </a>
           )}
           {secondaryCta && (
-            <a href={secondaryCta.href} class:list={[
-              'inline-block rounded-lg border-2 px-8 py-4 text-lg font-bold transition',
-              dark ? 'border-sky-brand text-sky-brand hover:bg-sky-brand/10' : 'border-sky-brand text-sky-brand hover:bg-sky-brand/10'
-            ]}>
+            <a href={secondaryCta.href} class="btn-secondary-light text-lg">
               {secondaryCta.text}
             </a>
           )}

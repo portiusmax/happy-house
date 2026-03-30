@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
+import TrustAccolades from '../components/TrustAccolades.astro';
+import NicheStats from '../components/NicheStats.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
 import { niches } from '../data/niches';
 import type { GetStaticPaths } from 'astro';
 
@@ -45,6 +48,14 @@ const faqItems = [
     answer: "Starting at $5,000/month with no contracts. Scope varies based on your market size and competition level. We'll give you a clear number after your free market audit.",
   },
 ];
+
+const pillars = [
+  { icon: '\u2699', title: 'Keywords & Technical SEO', body: niche.pillarKeywords },
+  { icon: '\u270E', title: 'Content Production', body: niche.pillarContent },
+  { icon: '\u25B6', title: 'Video Production', body: niche.pillarVideo },
+  { icon: '\u2605', title: 'Graphic Design', body: niche.pillarDesign },
+  { icon: '\u2726', title: 'AEO / GEO', body: niche.pillarAEO },
+];
 ---
 
 <Base
@@ -53,86 +64,133 @@ const faqItems = [
   schema={serviceSchema}
   faqSchema={faqItems}
 >
-  <!-- Hero -->
-  <section class="bg-navy py-24 md:py-32">
-    <div class="mx-auto max-w-[1200px] px-6">
+  <!-- Hero with radial gradient overlays -->
+  <section class="hero-gradient min-h-[65vh] flex items-center py-24 md:py-32">
+    <div class="relative z-10 mx-auto max-w-[1200px] px-6">
       <div class="max-w-3xl">
-        <span class="mb-4 inline-block rounded-md bg-sky-light px-3 py-1 text-sm font-semibold text-sky-darker">{niche.name}</span>
-        <h1 class="text-[40px] font-extrabold leading-[1.1] text-sky-brand md:text-[64px]">{niche.heroHeadline}</h1>
-        <p class="mt-6 text-lg text-white/80 md:text-xl">Happy House builds full search acquisition systems for {niche.name.toLowerCase()} contractors — technical SEO, content, video, design, and AI search visibility. Starting at $5,000/month.</p>
-        <a href="/audit" class="mt-10 inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">{niche.ctaText}</a>
+        <span class="animate-in mb-6 inline-block rounded-full bg-sky-brand/15 px-4 py-1.5 text-sm font-semibold text-sky-brand backdrop-blur-sm border border-sky-brand/20">{niche.name}</span>
+        <h1 class="animate-in delay-1 text-[40px] font-extrabold leading-[1.08] md:text-[68px]">
+          <span class="gradient-text">{niche.name} SEO</span>
+          <span class="text-white"> + AI visibility that generates </span>
+          <span class="gradient-text">real leads</span>
+        </h1>
+        <p class="animate-in delay-2 mt-8 text-lg text-white/70 md:text-xl leading-relaxed max-w-2xl">Happy House builds full search acquisition systems for {niche.name.toLowerCase()} contractors — technical SEO, content, video, design, and AI search visibility. Starting at $5,000/month.</p>
+        <div class="animate-in delay-3 mt-10 flex flex-wrap gap-4">
+          <a href="/audit" class="btn-primary text-lg">{niche.ctaText}</a>
+          <a href="#pillars" class="btn-secondary-light text-lg">See what's included</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Trust Accolades Bar -->
+  <TrustAccolades />
+
+  <!-- Stats -->
+  <NicheStats avgTicket={niche.avgTicket} niche={niche.name} />
+
   <!-- Why Search -->
-  <section class="bg-white py-24">
-    <div class="mx-auto max-w-[800px] px-6">
-      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">{niche.whySearchTitle}</h2>
-      <p class="text-muted leading-relaxed">{niche.whySearchBody}</p>
+  <section class="bg-white py-20 md:py-28">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="reveal grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+        <div>
+          <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">Why search matters</span>
+          <h2 class="text-[32px] font-bold leading-tight text-navy md:text-[44px]">{niche.whySearchTitle}</h2>
+        </div>
+        <div>
+          <p class="text-muted leading-relaxed text-lg">{niche.whySearchBody}</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Problem -->
-  <section class="bg-surface py-24">
-    <div class="mx-auto max-w-[800px] px-6">
-      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">{niche.problemTitle}</h2>
-      <p class="text-muted leading-relaxed">{niche.problemBody}</p>
+  <section class="bg-navy py-20 md:py-28">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-yellow-brand">The problem</span>
+        <h2 class="mb-8 text-[32px] font-bold leading-tight text-white md:text-[44px]">{niche.problemTitle}</h2>
+        <p class="text-white/60 leading-relaxed text-lg">{niche.problemBody}</p>
+      </div>
     </div>
   </section>
 
-  <!-- Five Pillars for this Niche -->
-  <section class="bg-white py-24">
-    <div class="mx-auto max-w-[800px] px-6">
-      <h2 class="mb-12 text-[32px] font-bold text-navy md:text-[40px]">What the Happy House system looks like for {niche.name.toLowerCase()}</h2>
+  <!-- Five Pillars -->
+  <section id="pillars" class="bg-surface py-20 md:py-28">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="mb-14 text-center reveal">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">The system</span>
+        <h2 class="text-[32px] font-bold text-navy md:text-[44px]">What the Happy House system looks like for {niche.name.toLowerCase()}</h2>
+      </div>
 
-      <div class="space-y-10">
-        <div>
-          <h3 class="mb-3 text-xl font-bold text-navy">Keywords & Technical SEO</h3>
-          <p class="text-muted leading-relaxed">{niche.pillarKeywords}</p>
-        </div>
-        <div>
-          <h3 class="mb-3 text-xl font-bold text-navy">Content Production</h3>
-          <p class="text-muted leading-relaxed">{niche.pillarContent}</p>
-        </div>
-        <div>
-          <h3 class="mb-3 text-xl font-bold text-navy">Video Production</h3>
-          <p class="text-muted leading-relaxed">{niche.pillarVideo}</p>
-        </div>
-        <div>
-          <h3 class="mb-3 text-xl font-bold text-navy">Graphic Design</h3>
-          <p class="text-muted leading-relaxed">{niche.pillarDesign}</p>
-        </div>
-        <div>
-          <h3 class="mb-3 text-xl font-bold text-navy">AEO / GEO — AI Search Optimization</h3>
-          <p class="text-muted leading-relaxed">{niche.pillarAEO}</p>
-        </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {pillars.slice(0, 3).map((p, i) => (
+          <div class={`glass-card p-8 reveal delay-${i + 1}`}>
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-brand/10 text-2xl text-sky-brand">{p.icon}</div>
+            <h3 class="mb-3 text-lg font-bold text-navy">{p.title}</h3>
+            <p class="text-muted leading-relaxed text-[15px]">{p.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 md:mx-auto md:max-w-[800px]">
+        {pillars.slice(3).map((p, i) => (
+          <div class={`glass-card p-8 reveal delay-${i + 4}`}>
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-brand/10 text-2xl text-sky-brand">{p.icon}</div>
+            <h3 class="mb-3 text-lg font-bold text-navy">{p.title}</h3>
+            <p class="text-muted leading-relaxed text-[15px]">{p.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- Timeline -->
-  <section class="bg-surface py-24">
+  <section class="bg-white py-20 md:py-28">
     <div class="mx-auto max-w-[800px] px-6">
-      <h2 class="mb-6 text-[32px] font-bold text-navy md:text-[40px]">Realistic timeline for {niche.name.toLowerCase()}</h2>
-      <p class="text-muted leading-relaxed">{niche.timeline}</p>
+      <div class="reveal">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">Timeline</span>
+        <h2 class="mb-10 text-[32px] font-bold text-navy md:text-[44px]">Realistic timeline for {niche.name.toLowerCase()}</h2>
+      </div>
+      <div class="space-y-6">
+        {niche.timeline.split('. ').filter(s => s.startsWith('Month')).map((step, i) => {
+          const [label, ...rest] = step.split(': ');
+          return (
+            <div class={`reveal delay-${Math.min(i + 1, 5)} flex gap-5 items-start`}>
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-brand/10 text-sm font-bold text-sky-brand">{i + 1}</div>
+              <div>
+                <p class="font-bold text-navy">{label}</p>
+                <p class="text-muted">{rest.join(': ')}.</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="bg-white py-24">
+  <section class="bg-surface py-20 md:py-28">
     <div class="mx-auto max-w-[800px] px-6">
-      <h2 class="mb-12 text-[32px] font-bold text-navy md:text-[40px]">Common questions about {niche.name.toLowerCase()} SEO</h2>
-      <FAQAccordion items={faqItems} />
+      <div class="reveal mb-12 text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.3em] text-sky-brand">FAQ</span>
+        <h2 class="text-[32px] font-bold text-navy md:text-[44px]">Common questions about {niche.name.toLowerCase()} SEO</h2>
+      </div>
+      <div class="reveal">
+        <FAQAccordion items={faqItems} />
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-navy py-24">
-    <div class="mx-auto max-w-[800px] px-6 text-center">
-      <h2 class="mb-4 text-[32px] font-bold text-white md:text-[40px]">Ready to dominate {niche.name.toLowerCase()} search in your market?</h2>
-      <p class="mb-8 text-lg text-white/70">Get a free market audit and see exactly where you stand — on Google and in AI.</p>
-      <a href="/audit" class="inline-block rounded-lg bg-yellow-brand px-8 py-4 text-lg font-bold text-navy transition hover:brightness-110">{niche.ctaText}</a>
+  <!-- Final CTA -->
+  <section class="hero-gradient py-24 md:py-32">
+    <div class="relative z-10 mx-auto max-w-[800px] px-6 text-center">
+      <h2 class="reveal mb-4 text-[32px] font-bold text-white md:text-[44px]">Ready to dominate {niche.name.toLowerCase()} search in your market?</h2>
+      <p class="reveal delay-1 mb-10 text-lg text-white/60">Get a free market audit and see exactly where you stand — on Google and in AI.</p>
+      <div class="reveal delay-2">
+        <a href="/audit" class="btn-primary text-lg">{niche.ctaText}</a>
+      </div>
     </div>
   </section>
+
+  <ScrollReveal />
 </Base>
